@@ -115,15 +115,16 @@ public class ProductRepository {
     }
 
     private void createTableProduct() {
-        try (PreparedStatement statement = this.connection.prepareStatement("CREATE TABLE IF NOT EXISTS Product\n" +
-                "(\n" +
-                "    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n" +
-                "    name VARCHAR(150) NOT NULL,\n" +
-                "    description VARCHAR(255) NOT NULL,\n" +
-                "    price DECIMAL(15, 2) NOT NULL\n" +
-                ");\n" +
-                "\n" +
-                "CREATE INDEX IX_Product_name ON Product (name);")) {
+        try (PreparedStatement statement = this.connection.prepareStatement(
+                "CREATE TABLE IF NOT EXISTS Product\n" +
+                        "(\n" +
+                        "    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n" +
+                        "    name VARCHAR(150) NOT NULL,\n" +
+                        "    description VARCHAR(255) NOT NULL,\n" +
+                        "    price DECIMAL(15, 2) NOT NULL\n" +
+                        ");\n" +
+                        "\n" +
+                        "CREATE INDEX IX_Product_name ON Product (name);")) {
             statement.execute();
         } catch (SQLException e) {
             log.error("Error create table product {}", e);

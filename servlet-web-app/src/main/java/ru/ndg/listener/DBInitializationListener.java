@@ -2,6 +2,7 @@ package ru.ndg.listener;
 
 import lombok.extern.log4j.Log4j2;
 import ru.ndg.db.DBUtils;
+import ru.ndg.persistence.repository.OrderRepository;
 import ru.ndg.persistence.repository.ProductRepository;
 
 import javax.servlet.ServletContext;
@@ -29,7 +30,9 @@ public class DBInitializationListener implements ServletContextListener {
         Connection connection = DBUtils.getConnection(jdbcUrl, username, password, jdbcDriverClassName);
         log.info("Open connection from database");
         ProductRepository productRepository = new ProductRepository(connection);
+        OrderRepository orderRepository = new OrderRepository(connection);
         sce.getServletContext().setAttribute("productRepository", productRepository);
+        sce.getServletContext().setAttribute("orderRepository", orderRepository);
     }
 
     @Override
