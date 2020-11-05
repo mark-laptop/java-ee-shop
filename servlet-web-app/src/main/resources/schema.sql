@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Product
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(150) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    price DECIMAL(15, 2) NOT NULL
+);
+
+CREATE INDEX IX_Product_name ON Product (name);
