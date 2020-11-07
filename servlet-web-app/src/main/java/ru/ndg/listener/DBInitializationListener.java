@@ -28,6 +28,7 @@ public class DBInitializationListener implements ServletContextListener {
             throw new IllegalArgumentException("No correct param from database connection");
         }
         Connection connection = DBUtils.getConnection(jdbcUrl, username, password, jdbcDriverClassName);
+        sce.getServletContext().setAttribute("jdbcConnection", connection);
         log.info("Open connection from database");
         ProductRepository productRepository = new ProductRepository(connection);
         OrderRepository orderRepository = new OrderRepository(connection);
