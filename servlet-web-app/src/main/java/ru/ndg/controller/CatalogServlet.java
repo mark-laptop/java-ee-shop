@@ -84,7 +84,11 @@ public class CatalogServlet extends HttpServlet {
             Product product = new Product();
             product.setName(req.getParameter("name"));
             product.setDescription(req.getParameter("description"));
-            product.setPrice(new BigDecimal(req.getParameter("price")));
+            String price = req.getParameter("price");
+            if (price.isEmpty()) {
+                product.setPrice(new BigDecimal("0.0"));
+            } else {
+                product.setPrice(new BigDecimal(price));}
             this.productRepository.insertProduct(product);
             resp.sendRedirect(getServletContext().getContextPath() + "/catalog");
         } catch (Exception e) {
@@ -99,7 +103,12 @@ public class CatalogServlet extends HttpServlet {
             product.setId(Integer.parseInt(req.getParameter("id")));
             product.setName(req.getParameter("name"));
             product.setDescription(req.getParameter("description"));
-            product.setPrice(new BigDecimal(req.getParameter("price")));
+            String price = req.getParameter("price");
+            if (price.isEmpty()) {
+                product.setPrice(new BigDecimal("0.0"));
+            } else {
+                product.setPrice(new BigDecimal(price));
+            }
             this.productRepository.updateProduct(product);
             resp.sendRedirect(getServletContext().getContextPath() + "/catalog");
         } catch (Exception e) {
