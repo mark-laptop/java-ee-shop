@@ -3,7 +3,9 @@
 <!doctype html>
 <html lang="en">
 
-<jsp:include page="head.jsp"/>
+<jsp:include page="head.jsp">
+    <jsp:param name="title" value="Product"/>
+</jsp:include>
 
 <body>
 
