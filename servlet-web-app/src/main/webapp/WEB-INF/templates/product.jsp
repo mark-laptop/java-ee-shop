@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
 
-<%@ include file="head.jsp" %>
+<jsp:include page="head.jsp"/>
 
 <body>
 
